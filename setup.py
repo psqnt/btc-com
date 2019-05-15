@@ -13,6 +13,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/pasquantonio/",
     packages=setuptools.find_packages(),
+    python_requires='>=3',
     install_requires=['requests'],
     classifiers=[
         "Programming Language :: Python :: 3",
