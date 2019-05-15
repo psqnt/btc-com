@@ -11,39 +11,39 @@ I haven't found anything formal but this limit works so far
 sleep_time = .25  # don't overstep rate limits
 ```
 
-# get latest block
+## get latest block
 ```python
 block = explorer.get_block()
 ```
 
-# get block by height
+## get block by height
 ```python
 block = explorer.get_block(50)
 ```
 
-# get block by hash
+## get block by hash
 ```python
 block = explorer.get_block(block.height)
 ```
 
-# get blocks on specific date
+## get blocks on specific date
 ```python
 date = '20170512'
 blocks = explorer.get_blocks_on_date(date)
 print(f'There were {len(blocks)} created on {date} ')
 ```
 
-# get transactions in a block with default payload
+## get transactions in a block with default payload
 ```python
 txs = explorer.get_transactions_in_block()
 ```
 
-# get transactions in a block, specify which page and number of txs
+## get transactions in a block, specify which page and number of txs
 ```python
 txs = explorer.get_transactions_in_block(page=2, page_size=10)
 ```
 
-# get a transaction by hash
+## get a transaction by hash
 ```python
 tx_hash = '937c3fb03b370557a8047f51c9efc2af17df2ed05fa48774c3105ef835133b3a'
 tx = explorer.get_transaction(tx_hash)
@@ -55,18 +55,18 @@ t3 = '265da4b0111ee0a65f81feb5467e0b73b939de7474fd01341058feaa16aee656'
 txs = explorer.get_transactions([t1, t2, t3])
 ```
 
-# get an address
+## get an address
 ```python
 address_id = '15urYnyeJe3gwbGJ74wcX89Tz7ZtsFDVew'
 address = explorer.get_address(address_id)
 ```
 
-# get unspent transaction data of an address
+## get unspent transaction data of an address
 ```python
 unspent_tx_data = explorer.get_unspent_transactions(address_id)
 ```
 
-# get bitmain digital currency index
+## get bitmain digital currency index
 ```python
 index = explorer.get_digital_currency_index()
 ```
