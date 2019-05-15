@@ -1,5 +1,5 @@
-## API Wrapper for btc.com block explorer api
-written in python 3
+## btc-com
+A python 3 api wrapper for btc.com block explorer
 
 docs: https://github.com/pasquantonio/btc.com-api-wrapper/blob/master/docs.md
 
