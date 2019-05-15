@@ -267,7 +267,7 @@ def get_digital_currency_index(timestamp=None):
     """
     Request digital currency index
     :param int timestamp: int timestamp
-    :return:
+    :return: an instance of BitmainTicker class
     """
     if timestamp is None:
         now = datetime.utcnow()
@@ -275,6 +275,3 @@ def get_digital_currency_index(timestamp=None):
     url = f'https://index.btc.com/api/cryptoindex/signindex?timestamp={timestamp}'
     response = requests.get(url).json()['data']
     return BitmainIndex(response)
-
-
-

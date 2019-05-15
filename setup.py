@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="btc-dot-com-api-wrapper",
+    name="btc-com",
     version="0.0.1",
     author="Joe Pasquantonio",
     author_email="joepasquantonio@gmail.com",
