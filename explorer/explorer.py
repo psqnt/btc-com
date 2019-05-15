@@ -116,9 +116,9 @@ class Transaction:
         return tx
 
 
-class IndexTicker:
+class BitmainIndex:
     """
-    BTC Ticker price by timestamp
+    Bitmain Crypto Index util
     """
     def __init__(self, index):
         self.timestamp = index['timestamp']
@@ -266,7 +266,7 @@ def get_unspent_transactions(address):
 def get_digital_currency_index(timestamp=None):
     """
     Request digital currency index
-    :param int timestamp: string timestamp
+    :param int timestamp: int timestamp
     :return:
     """
     if timestamp is None:
@@ -274,8 +274,7 @@ def get_digital_currency_index(timestamp=None):
         timestamp = int(datetime.timestamp(now))
     url = f'https://index.btc.com/api/cryptoindex/signindex?timestamp={timestamp}'
     response = requests.get(url).json()['data']
-    print(response)
-    return IndexTicker(response)
+    return BitmainIndex(response)
 
 
 

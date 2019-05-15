@@ -3,8 +3,9 @@ import requests
 from time import sleep
 
 
-BASE_URL = 'https://chain.api.btc.com/v3/'
-sleep_time = 1
+BTC_URL = 'https://chain.api.btc.com/v3/'
+
+sleep_time = .25
 
 
 def call_api(resource, payload=None):
@@ -13,7 +14,7 @@ def call_api(resource, payload=None):
     :param str resource: url endpoint being called
     :return: json api response
     """
-    url = BASE_URL + resource
+    url = BTC_URL + resource
     if payload:
         response = requests.get(url, params=payload)
     else:
