@@ -1,22 +1,30 @@
 import requests
 
+from time import sleep
+
 
 BASE_URL = 'https://chain.api.btc.com/v3/'
+sleep_time = 1
 
 
-def call_api(resource):
+def call_api(resource, payload=None):
     """
     Build URL and Make an API request
     :param str resource: url endpoint being called
     :return: json api response
     """
     url = BASE_URL + resource
-    try:
-        response = requests.get(url).json()
-    except Exception as e:
-        print(e)
-        response = e
-    return response
+    if payload:
+        response = requests.get(url, params=payload)
+    else:
+        response = requests.get(url)
+    if response.status_code == 403:  # try waiting
+        sleep(sleep_time)
+        if payload:
+            response = requests.get(url, params=payload)
+        else:
+            response = requests.get(url)
+    return handle_response(response)
 
 
 def handle_response(response):
@@ -25,8 +33,10 @@ def handle_response(response):
     :response Requests.models.Response: a response from the api
     :return: response ready for consumption from wrapper
     """
-    if isinstance(response, dict):
-        print(response)
-        return response
+    print
+    data = response.json()
+    if data['err_no'] == 0:
+        return data['data']
     else:
-        return response
+        print(data['err_msg'])
+        return data['err_msg']
