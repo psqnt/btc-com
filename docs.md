@@ -23,7 +23,8 @@ block = explorer.get_block(50)
 
 ## get block by hash
 ```python
-block = explorer.get_block(block.height)
+hash = '0000000000000000002750e4de8f033d28883024de470f775cedad6305b277c0'
+block = explorer.get_block(hash)
 ```
 
 ## get blocks on specific date
