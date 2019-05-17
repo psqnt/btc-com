@@ -76,6 +76,8 @@ relayed_by = block.extras['relayed_by']
 ```
 
 ## get latest block
+Returns an instance of `Block` class
+
 Default parameter for `get_block()` is `latest`
 ```python
 block = explorer.get_block()
@@ -85,6 +87,8 @@ This function hits this api endpoint:
 https://chain.api.btc.com/v3/block/latest
 
 ## get block by height
+Returns an instance of `Block` class
+
 ```python
 block = explorer.get_block(50)
 ```
@@ -93,6 +97,8 @@ This function hits this api endpoint:
 https://chain.api.btc.com/v3/block/50
 
 ## get block by hash
+Returns an instance of `Block` class
+
 ```python
 hash = '0000000000000000002750e4de8f033d28883024de470f775cedad6305b277c0'
 block = explorer.get_block(hash)
@@ -102,6 +108,8 @@ This function hits this api endpoint:
 https://chain.api.btc.com/v3/block/0000000000000000002750e4de8f033d28883024de470f775cedad6305b277c0
 
 ## get blocks on specific date
+Returns a list of `Block` class objects
+
 ```python
 date = '20170512'
 blocks = explorer.get_blocks_on_date(date)
@@ -159,6 +167,8 @@ version = tx.version
 ```
 
 ## get transactions in the block
+Function: `get_transactions_in_block()`
+
 Function parameters:
 
 `block` default is `latest` (block can be height or hash)
@@ -168,6 +178,7 @@ Function parameters:
 `pagesize` default is `50` (min: 1, max: 50)
 
 ## get transactions in the latest block
+Returns a list of `Transaction` objects
 
 ```python
 txs = explorer.get_transactions_in_block()
@@ -179,6 +190,7 @@ This function hits this api endpoint:
 https://chain.api.btc.com/v3/block/latest/tx
 
 ## get transactions in the latest block, specific page and number of txs
+Returns a list of `Transaction` objects
 ```python
 txs = explorer.get_transactions_in_block(page=2, page_size=10)
 ```
@@ -189,6 +201,7 @@ This function hits this api endpoint:
 https://chain.api.btc.com/v3/block/latest/tx?page=2&pagesize=10
 
 ## get transactions in specific block, specific page and number of txs
+Returns a list of `Transaction` objects
 ```python
 txs = explorer.get_transactions_in_block(block='50', page=2, page_size=10)
 ```
@@ -198,18 +211,23 @@ This function hits this api endpoint:
 
 https://chain.api.btc.com/v3/block/50/tx?page=2&pagesize=10
 
-## get a transaction by hash
+## get a transaction
+Returns an instance of `Transaction` class
 ```python
 tx_hash = '937c3fb03b370557a8047f51c9efc2af17df2ed05fa48774c3105ef835133b3a'
 tx = explorer.get_transaction(tx_hash)
+```
 
+## get multiple transactions
+Returns a list of `Transaction` objects
+```python
 t1 = 'e35d41072f68a9fc1afd21bd9577a36162175a6ee80f126e12ed955ac7ead7b9'
 t2 = '8bf367738201bd51b65ec4212eeb57d9a7c5e7f569254df9a73c82fcd7b9ed93'
 t3 = '265da4b0111ee0a65f81feb5467e0b73b939de7474fd01341058feaa16aee656'
 
 txs = explorer.get_transactions([t1, t2, t3])
 ```
-`txs` here is a list of Transaction objects
+`txs` here is a list of `Transaction` objects
 
 # Addresses
 JSON Address Response from API available here: 
