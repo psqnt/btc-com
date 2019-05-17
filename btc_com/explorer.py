@@ -35,10 +35,11 @@ class UnspentTransaction:
     Unspent Transaction data util
     """
     def __init__(self, unspent):
-        self.total_count = unspent['total_count']
-        self.page = unspent['page']
-        self.pagesize = unspent['pagesize']
-        self.list = unspent['list']
+        self.tx_hash = unspent['tx_hash']
+        self.tx_output_n = unspent['tx_output_n ']
+        self.tx_output_n2 = unspent['tx_output_n2']
+        self.value = unspent['value']
+        self.confirmations = unspent['confirmations']
 
     def __str__(self):
         """
@@ -65,7 +66,7 @@ class Block:
         self.next_block_hash = block['next_block_hash']
         self.size = block['size']
         self.pool_difficulty = block['pool_difficulty']
-        self.pool_difficulty = block['difficulty']
+        self.difficulty = block['difficulty']
         self.tx_count = block['tx_count']
         self.reward_block = block['reward_block']
         self.reward_fees = block['reward_fees']
@@ -260,7 +261,10 @@ def get_unspent_transactions(address):
     """
     resource = f'address/{address}/unspent'
     response = util.call_api(resource)
-    return UnspentTransaction(response)
+    unspent_txs = []
+    for unspent in response:
+        unspent_txs.append(UnspentTransaction(unspent))
+    return unspent_txs
 
 
 def get_digital_currency_index(timestamp=None):
