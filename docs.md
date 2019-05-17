@@ -8,7 +8,7 @@ pip install btc-com
 
 ## Import 
 ```python
-from explorer import explorer
+from btc_com import explorer
 ```
 
 ## API Rate Limits
@@ -304,6 +304,7 @@ index = index.index
 sign = index.sign
 ```
 ## get bitmain digital currency index
+Returns an instance of `BitmainIndex` class
 ```python
 index = explorer.get_digital_currency_index()
 ```
